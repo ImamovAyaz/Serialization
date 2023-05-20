@@ -3,9 +3,9 @@ import java.io.*;
 // https://www.javatpoint.com/serialization-in-java
 // https://www.baeldung.com/java-serialization
 
-public class Persist{
-    public static void main(String args[]){
-        try{
+public class Persist {
+    public static void main(String args[]) {
+        try {
             /*
             // Creating the object
             Student theStudent = new Student(1,"Semenchenko");
@@ -27,7 +27,7 @@ public class Persist{
              */
 
             Credantials creds = new Credantials("login", "password");
-            Student theStudent = new Student(1,"Semenchenko", "Java QA Automation", 0, creds);
+            Student theStudent = new Student(1, "Semenchenko", "Java QA Automation", 0, creds);
             FileOutputStream fOut = new FileOutputStream("studentFOut.txt");
             ObjectOutputStream out = new ObjectOutputStream(fOut);
             out.writeObject(theStudent);
@@ -35,11 +35,11 @@ public class Persist{
             out.close();
 
             System.out.println("Success");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-        try{
+        try {
             /*
             // Creating stream to read the object
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("studentFOut.txt"));
@@ -57,10 +57,10 @@ public class Persist{
              */
 
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("studentFOut.txt"));
-            Student theStudent = (Student)in.readObject();
+            Student theStudent = (Student) in.readObject();
             System.out.println(theStudent.id + " " + theStudent.name + " " + theStudent.course + " " + theStudent.fee);
             System.out.println(theStudent.creds.login + " " + theStudent.creds.password);
-            for (String grade: theStudent.grades) {
+            for (String grade : theStudent.grades) {
                 System.out.println(grade);
             }
 
@@ -68,7 +68,7 @@ public class Persist{
             //System.out.println(somePerson.id + " " + somePerson.name);
             in.close();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
